@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import sys
 sentence=[]
 def min_distance(term1,term2):
