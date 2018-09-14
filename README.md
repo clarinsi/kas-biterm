@@ -18,11 +18,7 @@ Once terms are labeled, the linker can be run on the output of the labeler.
 $ python link.py < kas-biterm.body.ana.1.txt.anno
 ```
 
-<<<<<<< HEAD
 The output of the script on stdout is identical to the input from stdin, with one additional column added. This column contains at the first token of a term the token ID of the term it is the translation of.
-=======
-The output of the script is identical to the input file, with one additional column added. This column contains, at the first token of a term, the token ID of the term it is the translation of.
->>>>>>> 8ebf6e4f18f6a5343b21b46d7bd56ec81c69ad0c
 
 ```
 999.20	napovedovanje	Ncnsa	napovedovanje	SL-TERM	SL-TERM	
