@@ -93,7 +93,7 @@ if __name__=='__main__':
   trainer.set_params({'max_iterations':10})
   for instance in train:
     labels=[e[-1] for e in instance]
-    feats=extract([(e[0],e[1],e[2]) for e in instance])
+    feats=extract([(e[1],e[2],e[3]) for e in instance])
     #print feats
     #print labels
     trainer.append(feats,labels)
@@ -119,7 +119,7 @@ if __name__=='__main__':
   f=open(sys.argv[1]+'.test.out','w')
   for instance in test:
     labels=[e[-1] for e in instance]
-    feats=extract([(e[0],e[1],e[2]) for e in instance])
+    feats=extract([(e[1],e[2],e[3]) for e in instance])
     pred_labels=tagger.tag(feats)
     tokens=['\t'.join(e[:3]) for e in instance]
     for token,label in zip(tokens,pred_labels):
@@ -150,7 +150,7 @@ if __name__=='__main__':
   trainer=pycrfsuite.Trainer(algorithm='pa',verbose=True)
   trainer.set_params({'max_iterations':10})
   for instance in instances:
-    feats=extract([(e[0],e[1],e[2]) for e in instance])
+    feats=extract([(e[1],e[2],e[3]) for e in instance])
     labels=[e[-1] for e in instance]
     #print feats
     #print labels
