@@ -1,10 +1,10 @@
 # kas-biterm
 
-Tool for extracting bilingual term pairs from translation patterns ```Slovene term (eng. English translation)``` and similar. The tool actually consists of two modules: (1) a sequence labeler which annotates terms and abbreviations in various languages in running text and (2) a term linker which links the terms and abbreviations to Slovene terms.
+Tool for extracting bilingual term pairs from translation patterns e.g. ```Slovene term (eng. English translation)```. The tool consists of two modules: (1) a sequence labeler which annotates terms and abbreviations in various languages in running text and (2) a term linker which links the terms and abbreviations to Slovene terms.
 
 ## Running the sequence labeler
 
-To run the sequence labeler, the ```label.py``` script should be run, its argument being the model to be used for labeling. The data to be labeled should be sent to stdin, the labeled output goes to stdout. Below is a toy example of labeling the training file for the first pattern ```kas-biterm.body.ana.1.txt``` with the model trained on that same file. All information in ```kas-biterm.body.ana.1.txt``` is necessary, except for the gold annotations in the last row.
+To run the sequence labeler, the ```label.py``` script should be run, its argument being the model to be used for labeling. The data to be labeled should be sent to stdin, the labeled output goes to stdout. Below is a toy example of labeling the training file for the first pattern ```kas-biterm.body.ana.1.txt``` with the model trained on that same file. All information in ```kas-biterm.body.ana.1.txt``` is necessary, except for the gold annotations in the last column.
 
 ```
 $ python label.py kas-biterm.body.ana.1.txt.model < kas-biterm.body.ana.1.txt > kas-biterm.body.ana.1.txt.anno
@@ -12,13 +12,17 @@ $ python label.py kas-biterm.body.ana.1.txt.model < kas-biterm.body.ana.1.txt > 
 
 ## Running the term linker
 
-Once terms are labeled in running text, the linker can be run on the output of the labeler.
+Once terms are labeled, the linker can be run on the output of the labeler.
 
 ```
 $ python link.py < kas-biterm.body.ana.1.txt.anno
 ```
 
+<<<<<<< HEAD
 The output of the script on stdout is identical to the input from stdin, with one additional column added. This column contains at the first token of a term the token ID of the term it is the translation of.
+=======
+The output of the script is identical to the input file, with one additional column added. This column contains, at the first token of a term, the token ID of the term it is the translation of.
+>>>>>>> 8ebf6e4f18f6a5343b21b46d7bd56ec81c69ad0c
 
 ```
 999.20	napovedovanje	Ncnsa	napovedovanje	SL-TERM	SL-TERM	
@@ -82,5 +86,4 @@ avg / total      0.990     0.991     0.989      1404
 ...
 ```
 
-The above reported results are obtained on 20% of data. They show that for the first two patterns reasonable results are obtained, while the third pattern does not manage to identify foreign terms and therefore is not used. After performing testing, a final model is trained on the whole of the available data.
-
+The above results are obtained on 20% of data. They show that for the first two patterns reasonable results are obtained, while the third pattern does not manage to identify foreign terms and therefore is not used. After performing testing, a final model is trained on the whole of the available data.
