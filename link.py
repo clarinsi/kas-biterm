@@ -5,7 +5,7 @@ def min_distance(term1,term2):
   start2,end2=term2[0][-1],term2[-1][-1]
   return min(abs(start1-end2),abs(start2-end1))
 
-for line in open(sys.argv[1]):
+for line in sys.stdin:
   if line.strip()=='':
     terms={'SL-TERM':[],'FOR-TERM':[],'SL-ABBR':[],'FOR-ABBR':[]}
     term=[]
