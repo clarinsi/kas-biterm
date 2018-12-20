@@ -51,7 +51,6 @@ for line in sys.stdin:
       if candidate in taken or term in taken:
         continue
       taken.add(candidate)
-      print candidate
       #taken.add(term)
       #print ' '.join([e[0][0] for e in term]),'|',' '.join([e[0][0] for e in candidate]),'|',distance
       mappings[candidate[0][0][0]]=term[0][0][0]
