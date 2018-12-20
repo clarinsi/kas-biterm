@@ -27,7 +27,7 @@ for line in sys.stdin:
     #print sentence
     abbr=len(terms['SL-TERM'])==0
     if abbr:
-      main=dict([(tuple(e),[]) for e in terms['SL-ABBR']])
+      #main=dict([(tuple(e),[]) for e in terms['SL-ABBR']])
       main=terms['SL-ABBR']
     else:
       #main=dict([(tuple(e),[]) for e in terms['SL-TERM']])
@@ -42,7 +42,8 @@ for line in sys.stdin:
       for candidate in terms[category]:
         for term in main:
           #print term,candidate
-          candidates.append((min_distance(term,candidate),term[-1][-1],term,candidate))
+          if min_distance(term,candidate)<10:
+            candidates.append((min_distance(term,candidate),term[-1][-1],term,candidate))
     #print sorted(candidates)
     taken=set()
     mappings={}
@@ -50,6 +51,7 @@ for line in sys.stdin:
       if candidate in taken or term in taken:
         continue
       taken.add(candidate)
+      print candidate
       #taken.add(term)
       #print ' '.join([e[0][0] for e in term]),'|',' '.join([e[0][0] for e in candidate]),'|',distance
       mappings[candidate[0][0][0]]=term[0][0][0]
